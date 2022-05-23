@@ -28,20 +28,16 @@ public class MainActivity extends AppCompatActivity {
         img = findViewById(R.id.img);
         click = findViewById(R.id.click);
 
-//      Camera can be opened by two methods : one is through api other one is intent
-//      we are using 'intent' method
-
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(i, CAMERA_PERMISSION);
-
             }
         });
     }
 
-//    this will get the image from camera and stored in form of 'data'
+//    this will get the image from camera and stored in form of 'data' variable
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -50,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CAMERA_PERMISSION) {
             Bitmap bitMapPhoto = (Bitmap) data.getExtras().get("data");
 //          Bitmap is also a type of image and even it can also be used in place of image
-
             img.setImageBitmap(bitMapPhoto);
         }
     }
